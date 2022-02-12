@@ -93,8 +93,8 @@ def indexWriter():
         for snippet in response['items']:
             snippet = snippet['snippet']
             try:
-                #if snippet['title'] == 'Private video' or snippet['title'] == 'Deleted video':
-                    #continue;
+                if snippet['title'] == 'Private video' or snippet['title'] == 'Deleted video':
+                    continue;
                 title = snippet['title']
                 description = snippet['description']
                 for i in snippet['thumbnails']:
@@ -137,19 +137,20 @@ def downloader():
     fileList =  os.listdir(movieFile)
     for i in dic:
         if i+'.mp4' in fileList:
-            print('ファイル名"'+i+'.mp4"は既に存在しているのでダウンロードを飛ばしました。')
+            print('動画"'+i+'.mp4"は既に存在しているのでダウンロードを飛ばしました。')
             continue;
         url = 'https://www.youtube.com/watch?v='+i
         print(i+'をダウンロード中...')
-        photoDownloader(dic[i]['thumbnail'], photoFile+'/'+i+'.jpg')
         #yt-dlpコマンドとそのオプション
         #ここをいじればダウンロードする画質とかを変えられる
-        #これは1080p以下の最高画質か、最高画質をダウンロードするためのオプション
-        values = ['./yt-dlp', '-P', movieFile, '-o', i, '-f', 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[ext=mp4][height<=1080] / bv*+ba/b', url]
-        #values = ['./yt-dlp', '-P', movieFile, '-o', i, '-S', 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[ext=mp4][height<=1080]', url]
-        check = subprocess.check_call(values)
-        if check != 0:
+        #これは1080p以下の最高画質をダウンロードするオプション
+        values = ['yt-dlp', '-P', movieFile, '-o', i, '-f', 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[ext=mp4][height<=1080]', url]
+        try:
+            subprocess.check_call(values)
+        except:
             print(i+'のダウンロードに失敗しました')
+            continue;
+        photoDownloader(dic[i]['thumbnail'], photoFile+'/'+i+'.jpg')
 
 def photoDownloader(url, dst_path):
     try:
