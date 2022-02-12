@@ -1,7 +1,7 @@
 このプログラムは、YouTube Data APIを利用して、高評価を押した動画を自動でダウンロードするプログラムです。
 
-前提として、yt-dlp(https://github.com/yt-dlp/yt-dlp)をダウンロードしてパスを通しておく必要があります。
-Googleクラウドプラットフォーム(https://console.cloud.google.com)にプロジェクトを作成し、テストユーザとして
+前提として、yt-dlp: https://github.com/yt-dlp/yt-dlp をダウンロードしてパスを通しておく必要があります。
+Googleクラウドプラットフォーム: https://console.cloud.google.com にプロジェクトを作成し、テストユーザとして
 対象にしたいgoogleアカウントを追加し、Youtube Data Apiを有効にし、OAuth2.0クライアントIDを登録し、
 そのクライアントIDをjsonとして保存し、client_secrets.jsonという名前に改名してlikedVideos-dl.pyと
 同じファイルに保存し、likedVideos-dl.pyを実行すると、認証画面が出てくるので、テストユーザに登録したアカウントで
