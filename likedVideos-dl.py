@@ -181,9 +181,6 @@ def manageDownloaded():
     json.dump(dic, tf)
     tf.close()
 
-def unliker():
-    pass
-
 if __name__ == "__main__":
     #youtubeApiから高評価した動画を全て読み出し、それらをjsonファイルに出力する
     indexWriter()
@@ -193,5 +190,3 @@ if __name__ == "__main__":
     nameChanger()
     #辞書に含まれているがダウンロードされなかったものを辞書から削除する
     manageDownloaded()
-    #ダウンロード出来なかったもの(削除されたか非公開か)の高評価を解除する(未実装)
-    unliker()
