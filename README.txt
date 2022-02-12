@@ -1,4 +1,4 @@
-このプログラムは、YouTube Data APIを利用して、高評価を押した動画を自動でダウンロードするプログラムです。
+YouTube Data APIを利用して、高評価を押した動画を自動で全てダウンロードするプログラムです。
 
 前提として、yt-dlp: https://github.com/yt-dlp/yt-dlp をダウンロードしてパスを通しておく必要があります。
 Googleクラウドプラットフォーム: https://console.cloud.google.com にプロジェクトを作成し、テストユーザとして
