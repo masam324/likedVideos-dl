@@ -147,6 +147,8 @@ def downloader():
         values = ['yt-dlp', '-P', movieFile, '-o', i, '-f', 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[ext=mp4][height<=1080]', url]
         try:
             subprocess.check_call(values)
+        except KeyboardInterrupt:
+            exit()
         except:
             print(i+'のダウンロードに失敗しました')
             continue;
